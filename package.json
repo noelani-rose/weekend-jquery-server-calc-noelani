@@ -1,0 +1,25 @@
+{
+  "name": "weekend-jquery-server-calc-noelani",
+  "version": "1.0.0",
+  "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noelani-rose/weekend-jquery-server-calc-noelani.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noelani-rose/weekend-jquery-server-calc-noelani/issues"
+  },
+  "homepage": "https://github.com/noelani-rose/weekend-jquery-server-calc-noelani#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "jquery": "^3.6.1"
+  }
+}
