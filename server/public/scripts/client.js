@@ -1,12 +1,19 @@
 $(document).ready(onReady);
 
-
+let firstSubmission = [];
+let secondSubmission = [];
 let pastSubmissions = [];
 let allSubmissions = [];
 let additionAnswers = [];
 let subtractionAnswers = [];
 let muliplicationAnswers = [];
 let divisionAnswers = [];
+
+
+// when any of these (except clear and submit) are clicked,
+// store the first value
+// only when submit is clicked, perform that 
+// respective operation 
 
 function onReady(){
     console.log("packages locked and loaded")
@@ -27,14 +34,18 @@ function additionOperator(evt){
         firstNumber: $('#firstNumInput').val(),
         secondNumber: $('#secondNumInput').val()
     };
-    additionSubmissions.firstNumber = Number(additionSubmissions.firstNumber);
-    additionSubmissions.secondNumber = Number(additionSubmissions.secondNumber);
-    let additionAnswer = 0;
-    additionAnswer = additionSubmissions.firstNumber += additionSubmissions.secondNumber
-    additionAnswer = additionAnswers;
+    firstSubmission.push(additionSubmissions.firstNumber);
+    console.log(firstSubmission)
+  
+
+
+    // additionSubmissions.firstNumber = Number(additionSubmissions.firstNumber);
+    // additionSubmissions.secondNumber = Number(additionSubmissions.secondNumber);
+    // let additionAnswer = 0;
+    // additionAnswer = additionSubmissions.firstNumber += additionSubmissions.secondNumber
+    // additionAnswer = additionAnswers;
     // additionAnswers.push(additionAnswer)
     // console.log(additionAnswer);
-    onCalcSubmit();
     // render();
 };
 
@@ -96,15 +107,21 @@ function divisionOperator(evt){
 function onCalcSubmit(evt){
     evt.preventDefault();
     console.log('in onCalcSubmit');
-    console.log(additionAnswers);
+    // console.log(additionAnswers);
 
-    additionAnswers.push(additionAnswer)
-    console.log(additionAnswer);
+    // let submissions = {
+    //     firstNumber: $('#firstNumInput').val(),
+    //     secondNumber: $('#secondNumInput').val()
+    // };
 
-    let calcSubmissions = {
-        firstNumber: $('#firstNumInput').val(),
-        secondNumber: $('#secondNumInput').val()
-    };
+
+    // additionAnswers.push(additionAnswer)
+    // console.log(additionAnswer);
+
+    // let calcSubmissions = {
+    //     firstNumber: $('#firstNumInput').val(),
+    //     secondNumber: $('#secondNumInput').val()
+    // };
 
 
 
@@ -139,6 +156,13 @@ function onCalcSubmit(evt){
 function clearOperator(evt){
     evt.preventDefault();
     console.log('in clearOperator');
+     additionSubmissions.firstNumber = Number(additionSubmissions.firstNumber);
+    additionSubmissions.secondNumber = Number(additionSubmissions.secondNumber);
+    let additionAnswer = 0;
+    additionAnswer = additionSubmissions.firstNumber += additionSubmissions.secondNumber
+    additionAnswer = additionAnswers;
+    additionAnswers.push(additionAnswer)
+    console.log(additionAnswer);
 }
 
 // function loadCalcHistory(){
