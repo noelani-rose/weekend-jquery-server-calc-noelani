@@ -2,11 +2,12 @@ console.log('in server.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { get } = require('jquery');
+const { send } = require('process');
 const app = express();
 const PORT = 3100;
 
-let calAnswers = [];
-// let theRandomNumber;
+let calculations = [];
+
 
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -17,7 +18,24 @@ app.listen(PORT, () => {
 
 })
 
-// GET & POST Routes go here
+
+app.post('/server-calc', (req, res)=> {
+  console.log('in app.POST server-calc', calculations)
+
+  
+  let newCalculations = req.body;
+
+  calculations.push(newCalculations);
+
+  res.sendStatus(201);
+});
+
+
+app.get('/server-calc', (req, res) =>{
+  console.log('in app.GET server-calc')
+
+  res.send(calculations);
+});
 
 
 
