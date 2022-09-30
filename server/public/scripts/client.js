@@ -1,8 +1,9 @@
 $(document).ready(onReady);
 
-let firstSubmission = [];
-let secondSubmission = [];
-let pastSubmissions = [];
+let firstNumSubmission = [];
+let secondNumSubmission = [];
+let numAnswers = []
+// let pastSubmissions = [];
 let allSubmissions = [];
 let additionAnswers = [];
 let subtractionAnswers = [];
