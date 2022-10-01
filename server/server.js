@@ -1,12 +1,20 @@
 console.log('in server.js');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { get } = require('jquery');
+const { get, post } = require('jquery');
 const { send } = require('process');
 const app = express();
 const PORT = 3100;
 
-let calculations = [];
+// let submissionsNumOne = [];
+// let submissionsNumTwo = [];
+// let submissionsOperator = [];
+// let solution = 0;
+
+let calcSubmissions = [];
+
+// let postedSubmissionAnswers = [];  
+
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -19,72 +27,63 @@ app.listen(PORT, () => {
 })
 
 
-app.post('/server-calc', (req, res)=> {
-  console.log('in app.POST server-calc', calculations)
+app.post('/calc-submission', (req, res)=> {
+  console.log('in POST calc submission')
 
-  
-  let newCalculations = req.body;
+  // let newCalcSubmissionsNumOne = req.body.firstNumberInput;
+  // submissionsNumOne.push(newCalcSubmissionsNumOne);
 
-  calculations.push(newCalculations);
+  // let newCalcSubmissionsNumTwo = req.body.secondNumberInput;
+  // submissionsNumTwo.push(newCalcSubmissionsNumTwo);
+
+  // let newCalcSubmissionOperator = req.body.operator;
+  // submissionsOperator.push(newCalcSubmissionOperator);
+
+
+  let newCalcSubmissions = req.body;
+  calcSubmissions.push(newCalcSubmissions)
+  console.log(calcSubmissions);
+
 
   res.sendStatus(201);
 });
 
 
-app.get('/server-calc', (req, res) =>{
-  console.log('in app.GET server-calc')
+app.get('/calc-solution', (req, res) => {
+  console.log('in GET calc solution');
 
-  res.send(calculations);
-});
+  if (calcSubmissions[0].operator === '+'){
+  let newSolution = Number(calcSubmissions[0].firstNumberInput) + Number(calcSubmissions[0].secondNumberInput)
+  calcSubmissions[0].solution = newSolution 
+
+  console.log(calcSubmissions);
+  res.send('workin on it!');
+
+  }
+
+  else if (calcSubmissions[0].operator === '-'){
+  let newSolution = Number(calcSubmissions[0].firstNumberInput) - Number(calcSubmissions[0].secondNumberInput)
+  calcSubmissions[0].solution = newSolution 
+  }
+
+  else if (calcSubmissions[0].operator === '*'){
+    let newSolution = Number(calcSubmissions[0].firstNumberInput) * Number(calcSubmissions[0].secondNumberInput)
+    calcSubmissions[0].solution = newSolution 
+  }
+
+  else if (calcSubmissions[0].operator === '/'){
+    let newSolution = Number(calcSubmissions[0].firstNumberInput) / Number(calcSubmissions[0].secondNumberInput)
+    calcSubmissions[0].solution = newSolution 
+  }
+
+})
 
 
+// app.get('/server-calc', (req, res) =>{
+//   console.log('in app.GET server-calc')
 
-// app.get('/guess-game', (req, res)=>{
-//   // console.log('guess-game GET playerguesses', playerGuesses);
-//   for (let i = 0; i < playerGuesses.length; i++){
-//     // console.log('this is player ones guess', playerGuesses[i].player1);
-//     playerGuesses[i].player1 = Number(playerGuesses[i].player1);
-//     if (theRandomNumber === playerGuesses[i].player1){
-//       console.log('you\re on the right track!');
-//     }
-//   }
-//   // playerGuesses.player1 = Number(playerGuesses.player1);
-//   // playerGuesses.player2 = Number(playerGuesses.player2);
-//   // console.log('is this the object as a number?', playerGuesses[0]);
-//   // if (theRandomNumber === playerGuesses[i].player1){
-//   //   alert('YOU ROCK!!!')
-//   // }
-//   // else if (theRandomNumber > playerGuesses[i].player1){
-//   //   alrert('you\'re sooooo high')
-//   // }
-//   // else if (theRandomNumber < playerGuesses[i].player1){
-//   //   alert('too slow and too low')
-//   // };
-//   res.send(playerGuesses);
-// })
+//   res.send(calculations);
+// });
 
-// app.post('/guess-game', (req, res)=> {
-//   console.log('in POST guess-game', playerGuesses )
-  
-//   let newPlayerGuesses = req.body;
 
-//   playerGuesses.push(newPlayerGuesses);
-
-//   res.sendStatus(201);
-// })
-
-// app.get('/guess-game-random', (req, res)=>{
-//    console.log('in guess-game GET random number');
-//   // let randoNumber = getRanNumber()
-
-//    res.send(randoNumber);
-// })
-
-// function getRanNumber (){
-//   let ranNum = Math.floor(Math.random() * 25) + 1;
-//   theRandomNumber = ranNum;
-//   console.log('here are the player guesses', playerGuesses);
-//   return theRandomNumber;
-
-// }
 
