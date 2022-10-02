@@ -104,9 +104,9 @@ function render(){
 function clearOperator (evt){
     evt.preventDefault();
     console.log('in clear all function');
-    $('#firstNumInput').val('');
-    $('#secondNumInput').val('');
-    $('.currentSolution').empty();
+    // $('#firstNumInput').val('');
+    // $('#secondNumInput').val('');
+    // $('.currentSolution').empty();
 
 }
 
