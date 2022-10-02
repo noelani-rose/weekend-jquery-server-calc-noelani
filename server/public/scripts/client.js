@@ -20,6 +20,7 @@ function onReady(){
     $('.multiplyBtn').on('click', multiplicationOperator);
     $('.divideBtn').on('click', divisionOperator);
     $('.clearBtn').on('click', clearOperator);
+
 }
 
 function additionOperator(){
@@ -83,7 +84,7 @@ function calcSolutions (){
     .then(response => {
         console.log('GET calc solution', response);
         newRecievedSolutions = response;
-        render()  
+        render();  
     })
     .catch(err => {
         console.log('GET calc solution error')
