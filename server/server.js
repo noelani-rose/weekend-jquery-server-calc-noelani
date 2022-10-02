@@ -7,7 +7,6 @@ const app = express();
 const PORT = 3100;
 
 
-let solution = [];
 let calcSubmissions = [];
 
 
@@ -51,12 +50,12 @@ app.get('/calc-solution', (req, res) => {
   }
 
   else if (calcSubmissions[0].operator === '*'){
-    calcSubmissions[calcSubmissions.length -1].solution = Number(calcSubmissions[0].firstNumberInput) * Number(calcSubmissions[0].secondNumberInput)
+    calcSubmissions[calcSubmissions.length -1].solution = Number(calcSubmissions[calcSubmissions.length -1].firstNumberInput) * Number(calcSubmissions[calcSubmissions.length -1].secondNumberInput)
     res.send(calcSubmissions);
   }
 
   else if (calcSubmissions[0].operator === '/'){
-    calcSubmissions[calcSubmissions.length -1].solution = Number(calcSubmissions[0].firstNumberInput) / Number(calcSubmissions[0].secondNumberInput)
+    calcSubmissions[calcSubmissions.length -1].solution = Number(calcSubmissions[calcSubmissions.length -1].firstNumberInput) / Number(calcSubmissions[calcSubmissions.length -1].secondNumberInput)
     res.send(calcSubmissions);
   }
 

@@ -1,12 +1,6 @@
 $(document).ready(onReady);
 
-// let firstNumSubmission = '';
-// let allSubmissions = [];
-// let allSubmissions = [];
-// let additionAnswers = [];
-// let subtractionAnswers = [];
-// let muliplicationAnswers = [];
-// let divisionAnswers = ''
+
 
 
 let operator = '';
@@ -25,7 +19,7 @@ function onReady(){
     $('.subtractBtn').on('click', subtractionOperator);
     $('.multiplyBtn').on('click', multiplicationOperator);
     $('.divideBtn').on('click', divisionOperator);
-    // $('.clearBtn').on('click', clearOperator);
+    $('.clearBtn').on('click', clearOperator);
 }
 
 function additionOperator(){
@@ -94,17 +88,25 @@ function calcSolutions (){
     .catch(err => {
         console.log('GET calc solution error')
     })
-
 };      
+
 
 function render(){
     console.log('in render');
     console.log(newRecievedSolutions);
-    $('#pastCalcs').empty();
-    $('.currentSolution').append(`<h2>${newRecievedSolutions[newRecievedSolutions.length -1].solution}</h2>`);
-    $('#pastCalcs').append(`<li>${newRecievedSolutions}</li>`);
-    
+    $('.currentSolution').empty();
+    $('.currentSolution').append(`<h2>${newRecievedSolutions[newRecievedSolutions.length -1].solution}</h2>`);        
+    $('#pastCalcs').append(`<li><h3>${newRecievedSolutions[newRecievedSolutions.length -1].firstNumberInput} ${newRecievedSolutions[newRecievedSolutions.length -1].operator} ${newRecievedSolutions[newRecievedSolutions.length -1].secondNumberInput}
+     = ${newRecievedSolutions[newRecievedSolutions.length -1].solution}</h3></li>
+    `);
 }
-    // for(let i = 0; i < newRecievedSolutions.length; i++)
-    // $('#pastCalcs').append(`
-    // <li>${newRecievedSolutions[i][]}</li>`)
+
+function clearOperator (evt){
+    evt.preventDefault();
+    console.log('in clear all function');
+    $('#firstNumInput').val('');
+    $('#secondNumInput').val('');
+    $('.currentSolution').empty();
+
+}
+
