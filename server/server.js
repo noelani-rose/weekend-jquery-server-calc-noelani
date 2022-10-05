@@ -38,7 +38,7 @@ app.get('/calc-solution', (req, res) => {
 
   if (calcSubmissions[calcSubmissions.length -1].operator === '+'){
     calcSubmissions[calcSubmissions.length -1].solution = Number(calcSubmissions[calcSubmissions.length -1].firstNumberInput) + Number(calcSubmissions[calcSubmissions.length -1].secondNumberInput)
-    res.send(calcSubmissions);
+    res.send(calcSubmissions[calcSubmissions.length-1]);
 
   }
 

@@ -7,10 +7,6 @@ let operator = '';
 let solution = '';
 let newRecievedSolutions = [];
 
-// when any of these (except clear and submit) are clicked,
-// store the first value
-// only when submit is clicked, perform that 
-// respective operation 
 
 function onReady(){
     console.log("packages locked and loaded")
@@ -83,7 +79,9 @@ function calcSolutions (){
     })
     .then(response => {
         console.log('GET calc solution', response);
-        newRecievedSolutions = response;
+        newRecievedSolutions.push(response);
+
+        // newRecievedSolutions = response;
         render();  
     })
     .catch(err => {
@@ -97,9 +95,14 @@ function render(){
     console.log(newRecievedSolutions);
     $('.currentSolution').empty();
     $('.currentSolution').append(`<h2>${newRecievedSolutions[newRecievedSolutions.length -1].solution}</h2>`);        
-    $('#pastCalcs').append(`<li><h3>${newRecievedSolutions[newRecievedSolutions.length -1].firstNumberInput} ${newRecievedSolutions[newRecievedSolutions.length -1].operator} ${newRecievedSolutions[newRecievedSolutions.length -1].secondNumberInput}
-     = ${newRecievedSolutions[newRecievedSolutions.length -1].solution}</h3></li>
-    `);
+    $('#pastCalcs').empty();
+    for (let calc of newRecievedSolutions){
+        $('#pastCalcs').append(`<li>${calc.firstNumberInput} ${calc.operator} ${calc.secondNumberInput} = ${calc.solution}`)
+    };
+    
+    // $('#pastCalcs').append(`<li><h3>${newRecievedSolutions[newRecievedSolutions.length -1].firstNumberInput} ${newRecievedSolutions[newRecievedSolutions.length -1].operator} ${newRecievedSolutions[newRecievedSolutions.length -1].secondNumberInput}
+    //  = ${newRecievedSolutions[newRecievedSolutions.length -1].solution}</h3></li>
+    // `);
 }
 
 function clearOperator (evt){
