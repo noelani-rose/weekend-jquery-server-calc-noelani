@@ -44,17 +44,17 @@ app.get('/calc-solution', (req, res) => {
 
   else if (calcSubmissions[calcSubmissions.length -1].operator === '-'){
     calcSubmissions[calcSubmissions.length -1].solution = Number(calcSubmissions[calcSubmissions.length -1].firstNumberInput) - Number(calcSubmissions[calcSubmissions.length -1].secondNumberInput)
-    res.send(calcSubmissions);
+    res.send(calcSubmissions[calcSubmissions.length-1]);
   }
 
-  else if (calcSubmissions[0].operator === '*'){
+  else if (calcSubmissions[calcSubmissions.length -1].operator === '*'){
     calcSubmissions[calcSubmissions.length -1].solution = Number(calcSubmissions[calcSubmissions.length -1].firstNumberInput) * Number(calcSubmissions[calcSubmissions.length -1].secondNumberInput)
-    res.send(calcSubmissions);
+    res.send(calcSubmissions[calcSubmissions.length-1]);
   }
 
-  else if (calcSubmissions[0].operator === '/'){
+  else if (calcSubmissions[calcSubmissions.length -1].operator === '/'){
     calcSubmissions[calcSubmissions.length -1].solution = Number(calcSubmissions[calcSubmissions.length -1].firstNumberInput) / Number(calcSubmissions[calcSubmissions.length -1].secondNumberInput)
-    res.send(calcSubmissions);
+    res.send(calcSubmissions[calcSubmissions.length-1]);
   }
 
 })
