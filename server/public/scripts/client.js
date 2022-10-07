@@ -7,12 +7,12 @@ let newRecievedSolutions = [];
 
 function onReady(){
     console.log("packages locked and loaded")
-    $('.submitBtn').on('click', equalOperator);
-    $('.additionBtn').on('click', additionOperator);
-    $('.subtractBtn').on('click', subtractionOperator);
-    $('.multiplyBtn').on('click', multiplicationOperator);
-    $('.divideBtn').on('click', divisionOperator);
-    $('.clearBtn').on('click', clearOperator);
+    $('#submitBtn').on('click', equalOperator);
+    $('#additionBtn').on('click', additionOperator);
+    $('#subtractBtn').on('click', subtractionOperator);
+    $('#multiplyBtn').on('click', multiplicationOperator);
+    $('#divideBtn').on('click', divisionOperator);
+    $('#clearBtn').on('click', clearOperator);
 
 }
 
