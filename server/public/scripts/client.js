@@ -4,6 +4,7 @@ let operator = '';
 let solution = '';
 let newRecievedSolutions = [];
 
+
 function onReady(){
     console.log("packages locked and loaded")
     $('.submitBtn').on('click', equalOperator);
@@ -96,6 +97,9 @@ function render(){
         $('#pastCalcs').append(`<li>${calc.firstNumberInput} ${calc.operator} ${calc.secondNumberInput} = ${calc.solution}`)
     };
     
+    // $('#pastCalcs').append(`<li><h3>${newRecievedSolutions[newRecievedSolutions.length -1].firstNumberInput} ${newRecievedSolutions[newRecievedSolutions.length -1].operator} ${newRecievedSolutions[newRecievedSolutions.length -1].secondNumberInput}
+    //  = ${newRecievedSolutions[newRecievedSolutions.length -1].solution}</h3></li>
+    // `);
 }
 
 function clearOperator (evt){
